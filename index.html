@@ -15,6 +15,10 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"
+    />
     <title>Warm Up</title>
   </head>
   <body>
@@ -24,28 +28,16 @@
           <table class="table" id="myTable">
             <thead>
               <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
               </tr>
             </thead>
-            <tbody id="tableBody">
-              <!-- <tr>
-                <td>Waqas</td>
-                <td>Mehmood</td>
-              </tr>
+            <tfoot>
               <tr>
-                <td>Waqas</td>
-                <td>Mehmood</td>
+                <th>First Name</th>
+                <th>Last Name</th>
               </tr>
-              <tr>
-                <td>Waqas</td>
-                <td>Mehmood</td>
-              </tr>
-              <tr>
-                <td>Waqas</td>
-                <td>Mehmood</td>
-              </tr> -->
-            </tbody>
+            </tfoot>
           </table>
         </div>
         <div class="col-6">
@@ -69,10 +61,14 @@
     </div>
 
     <script src="script.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
   </body>
 </html>

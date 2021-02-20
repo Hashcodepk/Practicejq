@@ -1,16 +1,16 @@
 $(document).ready(function () {
-  let mydata = [
-    { first_name: "Waqas", last_name: "Mehmood" },
-    { first_name: "Faraz", last_name: "Mehmood" },
-    { first_name: "Hashir", last_name: "Ghouri" },
-  ];
+  // let mydata = [
+  //   { first_name: "Waqas", last_name: "Mehmood" },
+  //   { first_name: "Faraz", last_name: "Mehmood" },
+  //   { first_name: "Hashir", last_name: "Ghouri" },
+  // ];
 
-  $.each(mydata, function (i, val) {
-    $("#tableBody").append(`<tr>
-      <td>${val.first_name}</td>
-      <td>${val.last_name}</td>
-    </tr>`);
-  });
+  // $.each(mydata, function (i, val) {
+  //   $("#tableBody").append(`<tr>
+  //     <td>${val.first_name}</td>
+  //     <td>${val.last_name}</td>
+  //   </tr>`);
+  // });
 
   //adding data with form
 
@@ -27,5 +27,12 @@ $(document).ready(function () {
 
     $("input#firstName").val("");
     $("input#lastName").val("");
+  });
+
+  //using DataTables Plugin
+
+  $("#myTable").DataTable({
+    ajax: "data.js",
+    columns: [{ data: "firstName" }, { data: "lastName" }],
   });
 });
