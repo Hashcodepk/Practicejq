@@ -20,42 +20,66 @@
       href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css"
     />
     <title>Warm Up</title>
+    <style>
+      #myTable tbody tr {
+        cursor: pointer;
+      }
+
+      #btnReset {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-6">
-          <table class="table" id="myTable">
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-              </tr>
-            </tfoot>
-          </table>
+        <!-- Datatable -->
+        <div class="col-12 col-md-6 mt-5">
+          <div class="card">
+            <h4 class="card-header">List of Records</h4>
+            <div class="card-body">
+              <table class="table" id="myTable">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="col-6">
-          <form class="row g-3" id="myForm">
-            <div class="col-md-6">
-              <label for="firstName" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="firstName" />
+        <!-- Form -->
+        <div class="col-12 col-md-6 mt-5">
+          <div class="card">
+            <h4 class="card-header">Data Entry</h4>
+            <div class="card-body">
+              <form class="row g-3" id="myForm">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" />
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" />
+                </div>
+                <div class="col-12 text-end">
+                  <button type="button" id="btnReset" class="btn btn-danger">
+                    Clear
+                  </button>
+                  <button type="button" id="btnSubmit" class="btn btn-success">
+                    Save
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="col-md-6">
-              <label for="lastName" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="lastName" />
-            </div>
-            <div class="col-12">
-              <button type="submit" id="btnSubmit" class="btn btn-success">
-                Submit
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
