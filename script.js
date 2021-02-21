@@ -5,31 +5,43 @@ let jsonData = [
     id: "1",
     firstName: "Waqas",
     lastName: "Mehmood",
+    designation: "CEO",
   },
   {
     id: "2",
     firstName: "Faraz",
     lastName: "Mehmood",
+    designation: "Director",
+  },
+  {
+    id: "3",
+    firstName: "Hashir",
+    lastName: "Ghouri",
+    designation: "Employee",
   },
   {
     id: "4",
     firstName: "George",
     lastName: "Bluth",
+    designation: "Manager",
   },
   {
     id: "5",
     firstName: "Janet",
     lastName: "Weaver",
+    designation: "Employee",
   },
   {
     id: "6",
     firstName: "Emma",
     lastName: "Wong",
+    designation: "Employee",
   },
   {
     id: "7",
     firstName: "Charles",
     lastName: "Morris",
+    designation: "Employee",
   },
 ];
 
@@ -40,10 +52,17 @@ let resetBtn = $("button#btnReset");
 const saveData = function () {
   let firstName = $("input#firstName");
   let lastName = $("input#lastName");
+
+  let designationText = $("#designation option:selected").text();
+  let designation = $("#designation");
+
   if (firstName.val() && lastName.val()) {
-    alert(firstName.val() + " " + lastName.val() + " Saved!");
+    alert(
+      firstName.val() + " " + lastName.val() + " " + designationText + " Saved!"
+    );
     firstName.val("");
     lastName.val("");
+    designation.val(0);
     resetBtn.hide();
   } else {
     alert("Please fill the form");
@@ -58,7 +77,11 @@ const getData = function (data) {
 
 // renderData Function
 
-let dataCols = [{ data: "firstName" }, { data: "lastName" }];
+let dataCols = [
+  { data: "firstName" },
+  { data: "lastName" },
+  { data: "designation" },
+];
 
 const renderData = function () {
   $("#myTable").DataTable({
@@ -74,11 +97,13 @@ $.fn.fillForm = function (data) {
   $("input#lastName").val(data.lastName);
 };
 
-$(document).ready(function () {
-  renderData();
+// All onClick Events in 1 Function
 
+const bindEvents = function () {
+  //save btn event
   $("#btnSubmit").on("click", () => saveData());
 
+  //table on Click
   let table = $("#myTable").DataTable();
 
   $("#myTable tbody").on("click", "tr", function () {
@@ -87,9 +112,43 @@ $(document).ready(function () {
     resetBtn.show();
   });
 
+  //clear form btn
   resetBtn.on("click", function () {
     $("input#firstName").val("");
     $("input#lastName").val("");
     resetBtn.hide();
   });
+};
+
+// Function to fill Designation dropdown with json data
+let dropdown = $("#designation");
+
+const fillDesignation = function (data) {
+  var filterDesignation = [];
+
+  if (!data.length) {
+    dropdown.append(
+      $("<option></option>").attr("value", 0).text("No designation found")
+    );
+  } else {
+    dropdown.append(
+      $("<option></option>").attr("value", 0).text("Select Designation")
+    );
+
+    $.each(data, function (i, val) {
+      if (filterDesignation.indexOf(val.designation) == -1) {
+        dropdown.append(
+          $("<option></option>").attr("value", val.id).text(val.designation)
+        );
+
+        filterDesignation.push(val.designation);
+      }
+    });
+  }
+};
+
+$(document).ready(function () {
+  renderData();
+  bindEvents();
+  fillDesignation(jsonData);
 });
