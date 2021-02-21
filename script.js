@@ -33,15 +33,18 @@ let jsonData = [
   },
 ];
 
+let resetBtn = $("button#btnReset");
+
 // SaveData Function
 
 const saveData = function () {
   let firstName = $("input#firstName");
   let lastName = $("input#lastName");
-  if (firstName && lastName) {
+  if (firstName.val() && lastName.val()) {
     alert(firstName.val() + " " + lastName.val() + " Saved!");
     firstName.val("");
     lastName.val("");
+    resetBtn.hide();
   } else {
     alert("Please fill the form");
   }
@@ -77,7 +80,6 @@ $(document).ready(function () {
   $("#btnSubmit").on("click", () => saveData());
 
   let table = $("#myTable").DataTable();
-  let resetBtn = $("button#btnReset");
 
   $("#myTable tbody").on("click", "tr", function () {
     let clickedData = table.row(this).data();
