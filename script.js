@@ -62,7 +62,7 @@ const saveData = function () {
     );
     firstName.val("");
     lastName.val("");
-    designation.val(0);
+    designation.val("Select Designation");
     resetBtn.hide();
   } else {
     alert("Please fill the form");
@@ -95,7 +95,7 @@ const renderData = function () {
 $.fn.fillForm = function (data) {
   $("input#firstName").val(data.firstName);
   $("input#lastName").val(data.lastName);
-  $("#designation").val(data.id); //stuck here
+  $("#designation").val(data.designation); //stuck here
 };
 
 // All onClick Events in 1 Function
@@ -110,6 +110,7 @@ const bindEvents = function () {
   $("#myTable tbody").on("click", "tr", function () {
     let clickedData = table.row(this).data();
     $.fn.fillForm(clickedData);
+    console.log(clickedData);
     resetBtn.show();
   });
 
@@ -117,7 +118,7 @@ const bindEvents = function () {
   resetBtn.on("click", function () {
     $("input#firstName").val("");
     $("input#lastName").val("");
-    $("#designation").val(0);
+    $("#designation").val("Select Designation");
     resetBtn.hide();
   });
 };
@@ -130,17 +131,23 @@ const fillDesignation = function (data) {
 
   if (!data.length) {
     dropdown.append(
-      $("<option></option>").attr("value", 0).text("No designation found")
+      $("<option></option>")
+        .attr("value", "No designation found")
+        .text("No designation found")
     );
   } else {
     dropdown.append(
-      $("<option></option>").attr("value", 0).text("Select Designation")
+      $("<option></option>")
+        .attr("value", "Select Designation")
+        .text("Select Designation")
     );
 
     $.each(data, function (i, val) {
       if (filterDesignation.indexOf(val.designation) == -1) {
         dropdown.append(
-          $("<option></option>").attr("value", val.id).text(val.designation)
+          $("<option></option>")
+            .attr("value", val.designation)
+            .text(val.designation)
         );
 
         filterDesignation.push(val.designation);
