@@ -95,6 +95,7 @@ const renderData = function () {
 $.fn.fillForm = function (data) {
   $("input#firstName").val(data.firstName);
   $("input#lastName").val(data.lastName);
+  $("#designation").val(data.id); //stuck here
 };
 
 // All onClick Events in 1 Function
@@ -116,6 +117,7 @@ const bindEvents = function () {
   resetBtn.on("click", function () {
     $("input#firstName").val("");
     $("input#lastName").val("");
+    $("#designation").val(0);
     resetBtn.hide();
   });
 };
